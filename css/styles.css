@@ -12,6 +12,12 @@ body {
     color: #333;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 main {
     padding: 20px;
     text-align: center;
@@ -22,6 +28,11 @@ header {
     background-color: #333;
     color: #fff;
     padding: 10px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
 }
 
 header nav ul {
@@ -45,7 +56,7 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
@@ -53,4 +64,64 @@ footer {
 /* Form Styles */
 form {
     margin: 20px auto;
-    max
+    max-width: 400px;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 10px 0;
+}
+
+form input[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #333;
+    color: #fff;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Image Styles */
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}

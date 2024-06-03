@@ -10,15 +10,37 @@
     <!-- Include Header -->
     <?php include '../includes/header.html'; ?>
 
-    <main>
-        <h1>Our Services</h1>
-        <ul>
-            <li>Catering Services</li>
-            <li>Event Planning</li>
-            <li>Menu Customization</li>
-        </ul>
-        <img src="../images/services.jpg" alt="Our Services">
-    </main>
+    <div class="container">
+        <main>
+            <h1>Our Services</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Catering</td>
+                        <td>Full-service gourmet catering for any event</td>
+                        <td>$1000</td>
+                    </tr>
+                    <tr>
+                        <td>Event Planning</td>
+                        <td>Comprehensive event planning services</td>
+                        <td>$1500</td>
+                    </tr>
+                    <tr>
+                        <td>Menu Customization</td>
+                        <td>Personalized menu planning and customization</td>
+                        <td>$500</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
 
     <!-- Include Footer -->
     <?php include '../includes/footer.html'; ?>
