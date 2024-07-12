@@ -1,3 +1,26 @@
+<?php
+include './php/db_connection.php';
+
+// Sanitize input data
+$username = mysqli_real_escape_string($conn, $_POST['username']);
+$email = mysqli_real_escape_string($conn, $_POST['email']);
+$password = mysqli_real_escape_string($conn, $_POST['password']);
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+// Insert into users table
+$sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashed_password')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "User registered successfully";
+    // Redirect to a success page or home page
+    header("Location: index.php");
+    exit();
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
