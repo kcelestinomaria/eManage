@@ -1,3 +1,5 @@
+<?php require_once '../includes/header.html'; ?>
+
 <?php
 $servername = "localhost"; // Replace with your MySQL server name if different
 $username = "root"; // Your MySQL username (default is 'root' in XAMPP)
@@ -12,3 +14,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 ?>
+
+
+<?php require_once '../includes/footer.html'; ?>
