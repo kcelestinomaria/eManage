@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $conn->close();
 } else {
-    header("Location: ../signup.html");
+    header("Location: ../register.html");
     exit();
 }
 ?>
