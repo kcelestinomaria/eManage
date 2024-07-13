@@ -19,6 +19,16 @@
             <canvas id="userActivityChart"></canvas>
             <!-- Add more chart placeholders -->
         </div>
+        <!-- Buttons to trigger exports -->
+    <div>
+        <button onclick="exportToPDF()">Export to PDF</button>
+        <button onclick="exportToExcel()">Export to Excel</button>
+    </div>
+
+    <!-- Placeholder for displaying data -->
+    <div id="dashboardData">
+        <!-- Data fetched from server will be displayed here -->
+    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
