@@ -1,7 +1,7 @@
 <?php require_once '../includes/header.html'; ?>
 
 <?php
-$servername = "localhost:3307"; // Replace with your MySQL server name if different
+$servername = "localhost:3306"; // Replace with your MySQL server name if different
 $username = "root"; // Your MySQL username (default is 'root' in XAMPP)
 $password = ""; // Your MySQL password (default is empty in XAMPP)
 $database = "gourmet"; // Your database name
