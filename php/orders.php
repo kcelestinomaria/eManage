@@ -1,36 +1,57 @@
-<?php require_once '../includes/header.html'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - Gourmet Delights</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Include Header -->
+    <?php include 'includes/header.html'; ?>
 
-<?php
-// Include database connection
-require_once '../php/db_connection.php';
+    <div class="container">
+        <h1>Orders</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Contact</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Guests</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                require_once 'db_connection.php';
+                
+                $sql = "SELECT id, name, contact, date, time, guests FROM reservations";
+                $result = $conn->query($sql);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $item = $_POST["item"];
-    $quantity = $_POST["quantity"];
-    $details = $_POST["details"];
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row["id"] . "</td>";
+                        echo "<td>" . $row["name"] . "</td>";
+                        echo "<td>" . $row["contact"] . "</td>";
+                        echo "<td>" . $row["date"] . "</td>";
+                        echo "<td>" . $row["time"] . "</td>";
+                        echo "<td>" . $row["guests"] . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='6'>No reservations found</td></tr>";
+                }
 
-    // Sanitize input to prevent SQL injection
-    $item = htmlspecialchars($item);
-    $quantity = intval($quantity); // Ensure quantity is an integer
-    $details = htmlspecialchars($details);
+                $conn->close();
+                ?>
+            </tbody>
+        </table>
+    </div>
 
-    try {
-        // Insert order into database
-        $stmt = $conn->prepare("INSERT INTO orders (item, quantity, details) VALUES (?, ?, ?)");
-        $stmt->bind_param("sis", $item, $quantity, $details);
-        $stmt->execute();
-
-        echo "Order placed successfully!";
-        // Optionally redirect to another page after successful order placement
-        // header("Location: order-confirmation.php");
-        // exit();
-    } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
-    }
-    $stmt->close();
-    $conn->close();
-}
-?>
-
-
-<?php require_once '../includes/footer.html'; ?>
+    <!-- Include Footer -->
+    <?php include 'includes/footer.html'; ?>
+</body>
+</html>
