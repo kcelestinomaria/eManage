@@ -27,7 +27,7 @@
                 <?php
                 require_once 'db_connection.php';
                 
-                $sql = "SELECT id, name, date, FROM reservations";
+                $sql = "SELECT id, name, date FROM reservations";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
