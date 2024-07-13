@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- Include Header -->
-    <?php include 'includes/header.html'; ?>
+    <?php include '../includes/header.html'; ?>
 
     <div class="container">
         <h1>Orders</h1>
@@ -49,6 +49,6 @@
     </div>
 
     <!-- Include Footer -->
-    <?php include 'includes/footer.html'; ?>
+    <?php include '../includes/footer.html'; ?>
 </body>
 </html>
