@@ -1,0 +1,35 @@
+<!-- edit_inventory.php -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Inventory Item</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Inventory Item</h2>
+        <?php
+        require_once 'config.php';
+
+        // Fetch inventory details
+        $id = $_GET['id'];
+        $stmt = $pdo->prepare("SELECT * FROM inventories WHERE id = ?");
+        $stmt->execute([$id]);
+        $inventory = $stmt->fetch(PDO::FETCH_ASSOC);
+        ?>
+        <form action="edit_inventory.php" method="post">
+            <input type="hidden" name="id" value="<?php echo $inventory['id']; ?>">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<?php echo $inventory['name']; ?>" required><br><br>
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="4" cols="50"><?php echo $inventory['description']; ?></textarea><br><br>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" value="<?php echo $inventory['quantity']; ?>" required><br><br>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" value="<?php echo $inventory['price']; ?>" required><br><br>
+            <input type="submit" value="Update Inventory Item">
+        </form>
+    </div>
+</body>
+</html>

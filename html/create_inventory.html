@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Inventory Item</title>
+</head>
+<body>
+    <h1>Create New Inventory Item</h1>
+    <form action="create_inventory.php" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required><br><br>
+
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" required><br><br>
+
+        <button type="submit">Create Inventory Item</button>
+    </form>
+</body>
+</html>
