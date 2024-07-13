@@ -2,6 +2,7 @@
 require_once '../vendor/autoload.php'; // Path to autoload.php of Composer dependencies
 require_once 'db_connection.php'; // Your database connection script
 use RobThree\Auth\TwoFactorAuth;
+use RobThree\Auth\Providers\Qr\BaconQrCodeProvider; // Example QR Code provider, adjust based on your actual implementation
 
 session_start();
 
@@ -14,8 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($conn->query($sql) === TRUE) {
         $user_id = $conn->insert_id;
 
-        // Initialize 2FA for the user
-        $tfa = new TwoFactorAuth('GourmetDelights');
+        // Initialize 2FA for the user with a QR Code provider
+        $qrcodeProvider = new BaconQrCodeProvider(); // Example QR code provider instance
+        $tfa = new TwoFactorAuth('GourmetDelights', $qrcodeProvider);
         $secret = $tfa->createSecret();
 
         // Save the secret in the database for this user
