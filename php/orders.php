@@ -27,7 +27,7 @@
                 <?php
                 require_once 'db_connection.php';
                 
-                $sql = "SELECT id, name, contact, date, time, guests FROM reservations";
+                $sql = "SELECT id, name, date, time, guests FROM reservations";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -35,7 +35,6 @@
                         echo "<tr>";
                         echo "<td>" . $row["id"] . "</td>";
                         echo "<td>" . $row["name"] . "</td>";
-                        echo "<td>" . $row["contact"] . "</td>";
                         echo "<td>" . $row["date"] . "</td>";
                         echo "<td>" . $row["time"] . "</td>";
                         echo "<td>" . $row["guests"] . "</td>";
