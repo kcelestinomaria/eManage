@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link your stylesheet here -->
+</head>
+<body>
+    <h1>User List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>JohnDoe</td>
+                <td>johndoe@example.com</td>
+                <td>
+                    <a href="edit_user.html">Edit</a> | 
+                    <a href="delete_user.html" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                </td>
+            </tr>
+            <!-- Repeat rows for other users -->
+        </tbody>
+    </table>
+    <a href="add_user.html">Add User</a>
+</body>
+</html>
