@@ -1,48 +1,46 @@
 <?php
-require_once 'db_connection.php'; // Include your database connection script
-require_once 'vendor/autoload.php'; // Include TCPDF or FPDF library autoload
+// Include PDF library
+require('fpdf.php');
 
-use TCPDF\TCPDF;
-
-// Initialize PDF
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
-// Set document information
-$pdf->SetCreator(PDF_CREATOR);
-$pdf->SetTitle('Exported Data to PDF');
-
-// Add a page
-$pdf->AddPage();
-
-// Fetch data from database
-$sql = "SELECT * FROM your_table"; // Adjust SQL query as per your table structure
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // Table header
-    $html = '<table border="1">';
-    $html .= '<thead><tr><th>ID</th><th>Name</th><th>Email</th></tr></thead>';
-    $html .= '<tbody>';
-
-    // Data rows
-    while ($row = $result->fetch_assoc()) {
-        $html .= '<tr>';
-        $html .= '<td>' . $row['id'] . '</td>';
-        $html .= '<td>' . $row['name'] . '</td>';
-        $html .= '<td>' . $row['email'] . '</td>';
-        $html .= '</tr>';
+class PDF extends FPDF {
+    // Page header
+    function Header() {
+        $this->SetFont('Arial', 'B', 12);
+        $this->Cell(0, 10, 'Dashboard Report', 0, 1, 'C');
     }
 
-    $html .= '</tbody></table>';
+    // Page footer
+    function Footer() {
+        $this->SetY(-15);
+        $this->SetFont('Arial', 'I', 8);
+        $this->Cell(0, 10, 'Page ' . $this->PageNo(), 0, 0, 'C');
+    }
+}
 
-    // Output the HTML content
-    $pdf->writeHTML($html, true, false, true, false, '');
+// Create PDF
+$pdf = new PDF();
+$pdf->AddPage();
+$pdf->SetFont('Arial', '', 12);
 
-    // Close and output PDF document
-    $pdf->Output('exported_data.pdf', 'D'); // D: download the file directly
-} else {
-    echo 'No data available';
+// Fetch data from database
+$servername = "localhost:8080";
+$username = "root";
+$password = "";
+$dbname = "gourmet";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM users";
+$result = $conn->query($sql);
+
+while ($row = $result->fetch_assoc()) {
+    $pdf->Cell(0, 10, $row['username'], 0, 1);
 }
 
 $conn->close();
+$pdf->Output('D', 'report.pdf');
 ?>

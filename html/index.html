@@ -3,114 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gourmet Delights</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-        }
-
-        header {
-            background-color: #343a40;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-
-        main {
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: #343a40;
-        }
-
-        p {
-            font-size: 1.25rem;
-            color: #6c757d;
-        }
-
-        .img-container {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .img-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta-buttons {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .cta-buttons a {
-            text-decoration: none;
-            color: #fff;
-            background-color: #007bff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-buttons a:hover {
-            background-color: #0056b3;
-        }
-
-        footer {
-            background-color: #343a40;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <title>Dashboard - Gourmet Delights/title>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dashboard.js" defer></script>
 </head>
 <body>
-    <!-- Include Header -->
-    <?php include 'includes/header.html'; ?>
-
-    <div class="container">
-        <main>
-            <h1>Welcome to Gourmet Delights</h1>
-            <p>Your one-stop destination for gourmet catering services, event reservations, and delicious menus.</p>
-            <div class="img-container">
-                <img src="../images/img.jpeg" alt="Delicious Food">
-                <img src="../images/img2.jpeg" alt="Event Catering">
-                <img src="../images/img1.jpeg" alt="Gourmet Dishes">
-            </div>
-            <div class="cta-buttons">
-                <a href="menu.html">View Menu</a>
-                <a href="reservations.html">Make a Reservation</a>
-                <a href="orders.html">Place an Order</a>
-                <a href="signup.html">Sign Up</a>
-                <a href="signin.html">Sign In</a>
-            </div>
-        </main>
-    </div>
-
-    <!-- Include Footer -->
-    <?php include 'includes/footer.html'; ?>
+    <header>
+        <h1>Dashboard - Gourmet Delights</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="stats">
+            <div id="totalUsers">Total Users: 0</div>
+            <!-- Add more statistics here -->
+        </section>
+        <section id="charts">
+            <canvas id="userChart"></canvas>
+            <!-- Add more charts here -->
+        </section>
+        <section id="actions">
+            <button onclick="exportToPDF()">Export to PDF</button>
+            <button onclick="exportToExcel()">Export to Excel</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gourmet Delights. All rights reserved.</p>
+    </footer>
 </body>
 </html>

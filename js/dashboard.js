@@ -1,6 +1,6 @@
-// dashboard.js
 document.addEventListener('DOMContentLoaded', function() {
     fetchDashboardData();
+    initCharts();
 });
 
 function fetchDashboardData() {
@@ -14,12 +14,10 @@ function fetchDashboardData() {
 }
 
 function exportToPDF() {
-    // Replace with actual endpoint or PHP script for exporting to PDF
     window.location.href = 'export_to_pdf.php';
 }
 
 function exportToExcel() {
-    // Replace with actual endpoint or PHP script for exporting to Excel
     window.location.href = 'export_to_excel.php';
 }
 
@@ -28,9 +26,26 @@ function updateTotalUsers(totalUsers) {
     // Add more update functions for other metrics
 }
 
-// Initialize and update charts using Chart.js
-
-// Fetch dashboard data when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    fetchDashboardData();
-});
+function initCharts() {
+    const ctx = document.getElementById('userChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Users',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}

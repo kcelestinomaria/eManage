@@ -1,26 +1,23 @@
 <?php
-require_once 'db_connection.php'; // Ensure proper database connection
+header('Content-Type: application/json');
 
-// Example: Fetch total number of users
-$sql = "SELECT COUNT(id) AS total_users FROM users";
-$result = $conn->query($sql);
+// Database connection
+$servername = "localhost:8080";
+$username = "";
+$password = "";
+$dbname = "gourmet";
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $totalUsers = $row['total_users'];
-} else {
-    $totalUsers = 0;
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-// Example: Fetch other metrics as needed
+// Fetch total users
+$sql = "SELECT COUNT(*) as total_users FROM users";
+$result = $conn->query($sql);
+$data = $result->fetch_assoc();
 
-// Prepare data to send back as JSON
-$data = array(
-    'total_users' => $totalUsers,
-    // Add more metrics here
-);
-
-header('Content-Type: application/json');
 echo json_encode($data);
 
 $conn->close();
